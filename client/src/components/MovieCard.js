@@ -14,13 +14,15 @@ import clsx from 'clsx';
 
 const useStyles = makeStyles((theme) => ({
     movieCard: {
-        width: '20%',
+        width: '30%',
         marginBottom: '3%',
         marginRight: '0.5%'
     },
     media: {
-        height: 0,
-        paddingTop: '56.25%'
+        width: '95%',
+        paddingTop: '56.25%',
+        paddingBottom: '56.25%',
+        margin: '0 auto'
     },
     expand: {
         transform: 'rotate(0deg)',
@@ -54,7 +56,7 @@ function MovieCard(props) {
                 <IconButton aria-label='add to favorites'>
                     <FavoriteIcon />
                 </IconButton>
-                <IconButton
+                {/* <IconButton
                     className={clsx(classes.expand, {
                         [classes.expandOpen]: expanded,
                     })}
@@ -63,7 +65,7 @@ function MovieCard(props) {
                     aria-label="show more"
                 >
                     <ExpandMoreIcon />
-                </IconButton>
+                </IconButton> */}
             </CardActions>
         </Card>
     )
