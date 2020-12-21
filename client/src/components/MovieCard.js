@@ -43,7 +43,7 @@ function MovieCard(props) {
     return (
         <Card className={classes.movieCard}>
             <CardHeader
-                title={props.movie.Title}
+                title={`${props.movie.Title} (${props.movie.Year})`}
                 subheader={props.movie.Actors}
             />
             <CardMedia className={classes.media} image={props.movie.Poster} />
