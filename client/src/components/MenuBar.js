@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import ToolBar from '@material-ui/core/Toolbar';
 import SearchIcon from '@material-ui/icons/Search';
@@ -57,7 +57,18 @@ const useStyles = makeStyles((theme) => ({
 
 function MenuBar()
 {
-    const classes = useStyles()
+    const classes = useStyles();
+    const [search, setSearch] = useState('');
+
+    const handleSearch = (event) => {
+        setSearch(event.target.value);
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(search);
+        setSearch('');
+    }
     return (
         <AppBar className={classes.root}>
             <ToolBar>
@@ -66,14 +77,18 @@ function MenuBar()
                     <div className={classes.SearchIcon}>
                         <SearchIcon/>
                     </div>
-                    <InputBase
-                        placeholder='Search...'
-                        classes={{
-                            root: classes.inputRoot,
-                            input: classes.inputInput
-                        }}
-                        inputProps={{'aria-label': 'search'}}
-                    />
+                    <form onSubmit={handleSubmit}>
+                        <InputBase
+                            placeholder='Search...'
+                            classes={{
+                                root: classes.inputRoot,
+                                input: classes.inputInput
+                            }}
+                            inputProps={{'aria-label': 'search'}}
+                            onChange={handleSearch}
+                            value={search}
+                        />
+                    </form>
                 </div>
             </ToolBar>
         </AppBar>
