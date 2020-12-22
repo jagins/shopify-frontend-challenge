@@ -6,7 +6,7 @@ function MovieList()
     const [movieList, setMovieList] = useState(null);
 
     useEffect(() => {
-        axios.get(`http://www.omdbapi.com/?s=san&apikey=${process.env.REACT_APP_API_KEY}`)
+        axios.get(`http://www.omdbapi.com/?s=san&type=movie&apikey=${process.env.REACT_APP_API_KEY}`)
         .then(res => setMovieList(res.data.Search))
         .catch(err => console.log(err))
     }, [])
