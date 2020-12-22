@@ -19,5 +19,5 @@ export const useStyles = makeStyles((theme) => ({
     },
     expandOpen: {
         transfrom: 'rotate(180deg)'
-    }
+    },
 }));
