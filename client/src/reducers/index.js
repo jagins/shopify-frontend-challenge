@@ -20,6 +20,12 @@ export const reducer = (state = initalState, action) =>
                 isLoading: false,
             }
         }
+        case 'ADD_MOVIE': {
+            return {
+                ...state,
+                nominatedMovies: [...state.nominatedMovies, action.payload]
+            }
+        }
         default: 
             return state
     }
