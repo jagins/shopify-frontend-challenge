@@ -7,7 +7,7 @@ function NominationList(props)
     return (
         <div className='nomination-list'>
            {nominatedMovies.length > 0 && <h3>Nominated Movies</h3>}
-           {nominatedMovies.map(movie => <span>{movie.Title}, </span>)}
+           {nominatedMovies.length > 0 && nominatedMovies.map(movie => <span>{movie.Title}, </span>)}
         </div>
     )
 }
