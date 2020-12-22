@@ -5,9 +5,12 @@ import SearchIcon from '@material-ui/icons/Search';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import {useStyles} from '../styles/MenubarStyles';
+import {getMovies} from '../actions';
+import {connect} from 'react-redux';
 
-function MenuBar()
+function MenuBar(props)
 {
+    const {getMovies} = props;
     const classes = useStyles();
     const [search, setSearch] = useState('');
 
@@ -17,7 +20,7 @@ function MenuBar()
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(search);
+        getMovies(search);
         setSearch('');
     }
     return (
@@ -45,5 +48,7 @@ function MenuBar()
         </AppBar>
     )
 }
-
-export default MenuBar;
+const mapStateToProps = state => {
+    return {...state};
+}
+export default connect(mapStateToProps, {getMovies})(MenuBar);

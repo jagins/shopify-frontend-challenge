@@ -1,24 +1,27 @@
-import React, {useEffect, useState} from 'react';
-import axios from 'axios';
+import React from 'react';
 import MovieCard from './MovieCard';
-function MovieList() 
-{
-    const [movieList, setMovieList] = useState(null);
+import {connect} from 'react-redux';
+import {getMovies} from '../actions';
 
-    useEffect(() => {
-        axios.get(`http://www.omdbapi.com/?s=san&type=movie&apikey=${process.env.REACT_APP_API_KEY}`)
-        .then(res => setMovieList(res.data.Search))
-        .catch(err => console.log(err))
-    }, [])
+function MovieList(props) 
+{
+    const {isLoading, movieList} = props;
     return (
         <div className='movie-list'>
-            {movieList && (
+            {movieList && !isLoading ? (
                  movieList.map(movie =>
                     <MovieCard key={movie.imdbID} movie={movie}/>
                 )
-            )}
+            ): <h3>Please wait, loading your results</h3>}
         </div>
     )
 }
 
-export default MovieList;
+const mapStateToProps = state => {
+    return {
+        isLoading: state.isLoading,
+        movieList: state.movieList
+    }
+}
+
+export default connect(mapStateToProps, {getMovies})(MovieList);
