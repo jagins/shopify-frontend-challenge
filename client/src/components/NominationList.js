@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import swal from 'sweetalert';
+import Button from '@material-ui/core/Button'
 
 function NominationList(props)
 {
@@ -12,7 +13,7 @@ function NominationList(props)
     return (
         <ul className='nomination-list'>
            {nominatedMovies.length > 0 && <h3>Nominated Movies</h3>}
-           {nominatedMovies.length > 0 && nominatedMovies.map(movie => <li key={movie.imdbID}>{movie.Title}</li>)}
+           {nominatedMovies.length > 0 && nominatedMovies.map(movie => <li key={movie.imdbID}>{movie.Title} <Button color='primary' variant='text'>Remove</Button></li>)}
         </ul>
     )
 }
