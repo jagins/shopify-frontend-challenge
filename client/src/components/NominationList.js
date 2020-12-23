@@ -10,10 +10,10 @@ function NominationList(props)
         swal('Success', `You've added 5 movies to your nomination list`, 'success');
     }
     return (
-        <div className='nomination-list'>
+        <ul className='nomination-list'>
            {nominatedMovies.length > 0 && <h3>Nominated Movies</h3>}
-           {nominatedMovies.length > 0 && nominatedMovies.map(movie => <span>{movie.Title}, </span>)}
-        </div>
+           {nominatedMovies.length > 0 && nominatedMovies.map(movie => <li key={movie.imdbID}>{movie.Title}</li>)}
+        </ul>
     )
 }
 

@@ -11,13 +11,13 @@ import {connect} from 'react-redux';
 import {addMovieToList} from '../actions';
 
 function MovieCard(props) {
-    const {addMovieToList} = props;
+    const {addMovieToList, nominatedMovies} = props;
     const classes = useStyles();
     const [clicked, setClicked] = useState(false);
 
     const handleClick = () => {
         setClicked(!clicked);
-        if(!clicked)
+        if(!clicked && nominatedMovies.length < 5)
         {
             addMovieToList(props.movie);
         }
@@ -36,7 +36,9 @@ function MovieCard(props) {
 }
 
 const mapStateToProps = state => {
-    return state;
+    return {
+        nominatedMovies: state.nominatedMovies
+    };
 }
 
 export default connect(mapStateToProps, {addMovieToList})(MovieCard);
