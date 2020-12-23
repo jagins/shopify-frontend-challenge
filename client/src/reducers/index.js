@@ -26,6 +26,12 @@ export const reducer = (state = initalState, action) =>
                 nominatedMovies: [...state.nominatedMovies, action.payload]
             }
         }
+        case 'REMOVE_MOVIE': {
+            return {
+                ...state,
+                nominatedMovies: state.nominatedMovies.filter(movie => movie.imdbID !== action.payload.imdbID)
+            }
+        }
         default: 
             return state
     }

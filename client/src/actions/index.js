@@ -3,6 +3,7 @@ import axios from 'axios';
 const LOADING = 'LOADING';
 const SUCCESS = 'SUCCESS';
 const ADDMOVIE = 'ADD_MOVIE';
+const REMOVEMOVIE = 'REMOVE_MOVIE';
 
 export const getMovies = (searchQuery) => dispatch => {
     dispatch({type: LOADING});
@@ -14,5 +15,9 @@ export const getMovies = (searchQuery) => dispatch => {
 }
 
 export const addMovieToList = (movie) => dispatch => {
-    dispatch({type: ADDMOVIE, payload: movie})
+    dispatch({type: ADDMOVIE, payload: movie});
+}
+
+export const removeMovieFromList = (movie) => dispatch => {
+    dispatch({type: REMOVEMOVIE, payload: movie});
 }
