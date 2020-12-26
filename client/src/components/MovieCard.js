@@ -14,7 +14,7 @@ function MovieCard(props) {
     const [clicked, setClicked] = useState(false);
 
     const handleClick = () => {
-        setClicked(!clicked);
+        setClicked(true);
         if(!clicked && nominatedMovies.length < 5)
         {
             addMovieToList(props.movie);
