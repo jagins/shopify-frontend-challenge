@@ -2,6 +2,7 @@ const initalState = {
     isLoading: false,
     movieList: [],
     nominatedMovies: [],
+    clickedMovies: {}
 }
 
 export const reducer = (state = initalState, action) =>
@@ -23,7 +24,8 @@ export const reducer = (state = initalState, action) =>
         case 'ADD_MOVIE': {
             return {
                 ...state,
-                nominatedMovies: [...state.nominatedMovies, action.payload]
+                nominatedMovies: [...state.nominatedMovies, action.payload],
+                clickedMovies: {...state.clickedMovies, [`${action.payload.Title} (${action.payload.Year})`]: action.payload }
             }
         }
         case 'REMOVE_MOVIE': {
