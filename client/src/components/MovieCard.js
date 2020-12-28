@@ -24,7 +24,9 @@ function MovieCard(props) {
     useEffect(() => {
         if(`${props.movie.Title} (${props.movie.Year})` in clickedMovies)
             setClicked(true);
-    }, [])
+        else
+            setClicked(false)
+    }, [props.movie.Title, props.movie.Year, clickedMovies])
     return (
         <Card className={classes.movieCard}>
             <CardHeader title={`${props.movie.Title} (${props.movie.Year})`}/>

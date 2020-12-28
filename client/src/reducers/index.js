@@ -29,9 +29,11 @@ export const reducer = (state = initalState, action) =>
             }
         }
         case 'REMOVE_MOVIE': {
+            delete state.clickedMovies[`${action.payload.Title} (${action.payload.Year})`]
             return {
                 ...state,
-                nominatedMovies: state.nominatedMovies.filter(movie => movie.imdbID !== action.payload.imdbID)
+                nominatedMovies: state.nominatedMovies.filter(movie => movie.imdbID !== action.payload.imdbID),
+                clickedMovies: {...state.clickedMovies}
             }
         }
         default: 
