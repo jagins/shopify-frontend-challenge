@@ -7,7 +7,7 @@ const REMOVEMOVIE = 'REMOVE_MOVIE';
 
 export const getMovies = (searchQuery) => dispatch => {
     dispatch({type: LOADING});
-    axios.get(`http://www.omdbapi.com/?s=${searchQuery}&type=movie&apikey=${process.env.REACT_APP_API_KEY}`)
+    axios.get(`https://www.omdbapi.com/?s=${searchQuery}&type=movie&apikey=${process.env.REACT_APP_API_KEY}`)
     .then(res => {
         dispatch({type: SUCCESS, payload: res.data.Search});
     })
