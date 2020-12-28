@@ -16,7 +16,7 @@ function NominationList(props)
         <ul className='nomination-list'>
            {nominatedMovies.length > 0 && <h3>Nominated Movies</h3>}
            {nominatedMovies.length > 0 && nominatedMovies.map(movie => 
-            <li key={movie.imdbID}>{movie.Title} <Button color='primary' variant='text' onClick={() => removeMovieFromList(movie)}>Remove</Button></li>)}
+            <li key={movie.imdbID}>{`${movie.Title} (${movie.Year})`} <Button color='primary' variant='text' onClick={() => removeMovieFromList(movie)}>Remove</Button></li>)}
         </ul>
     )
 }
